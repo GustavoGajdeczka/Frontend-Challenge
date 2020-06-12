@@ -19,14 +19,17 @@
       </div>
       <div class="row product-list">
         <div class="col-4"
-             *ngFor="let product of products">
+             *ngFor="let product of products"
+             (click)="getProduct(product)"
+             (mouseover)="product.hover=true"
+             (mouseleave)="product.hover=false">
           <div class="card product-card align-middle">
             <img class="card-img-top" src="./../assets/{{product.image}}" alt="Card image cap">
           </div>
           <div class="card-body">
             <p class="card-text text-center text-name" *ngIf="!product.hover">{{product.name}}</p>
             <p class="card-text text-center text-price" *ngIf="!product.hover">R$ {{product.price | number:'2.2-2'}}</p>
-            <p class="card-text text-center text-cart text-price"> adicionar ao carrinho </p>
+            <p class="card-text text-center text-cart text-price" *ngIf="product.hover"> adicionar ao carrinho </p>
           </div>
         </div>
       </div>

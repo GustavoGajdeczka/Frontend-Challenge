@@ -11,11 +11,27 @@ export class AppComponent {
   selectedDropdown: string;
   selectedProducts: number;
   hover: boolean;
+  carts: any;
+  valor: any;
+  subtotal: number;
+  arrayId: any;
 
   constructor() {
     console.log(this.products);
     this.selectedDropdown = "Mais Populares";
     this.selectedProducts = 0;
+  }
+
+  public getProduct(product: any) {
+    if (!this.carts) {
+      this.carts = [product]
+      this.arrayId = [product.id]
+      this.selectedProducts++;
+    } else {
+      this.selectedProducts++;
+      this.carts.push(product);
+      this.arrayId.push(product.id);
+    }
   }
 
   public sortType(filter: string) {
