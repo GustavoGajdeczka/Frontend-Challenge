@@ -30,10 +30,31 @@ export class AppComponent {
       this.arrayId = [product.id]
       this.selectedProducts++;
     } else {
+      for (let index = 0; index < this.arrayId.length; index++) {
+        if (this.arrayId[index] == product.id) {
+          return null
+        }
+      }
       this.selectedProducts++;
       this.carts.push(product);
       this.arrayId.push(product.id);
     }
+    console.log(this.arrayId);
+    console.log(this.carts);
+    this.subtotal = 0;
+    this.frete = 0;
+    this.valorTotal = 0;
+    for (let index = 0; index < this.carts.length; index++) {
+      this.valor = this.carts[index].price;
+      this.subtotal += this.valor;
+      if (this.subtotal < 250) {
+        this.frete += 10;
+      } else {
+        this.frete = 0;
+      }
+      this.valorTotal = this.frete + this.subtotal
+    }
+    console.log(this.subtotal + "+" + this.valorTotal + "+" + this.frete)
   }
 
   public removeProducts(product) {
