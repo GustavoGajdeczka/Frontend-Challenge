@@ -3,6 +3,19 @@
     <div class="product-side">
       <div class="d-flex top-description">
         <h1 class="text-top"> Games </h1>
+        <div ngbDropdown class="dropdown justify-content-end">
+          <button class="btn btn-light dropdown-btn"
+                  id="dropdownBasic1"
+                  ngbDropdownToggle>
+            {{selectedDropdown}}
+          </button>
+          <div class="col-lg" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="sortType('score')">Mais Populares</button>
+            <button ngbDropdownItem (click)="sortType('lessPrice')">Menor Preço</button>
+            <button ngbDropdownItem (click)="sortType('plusPrice')">Maior Preço</button>
+            <button ngbDropdownItem (click)="sortType('alfabetic')">Ordem Alfatabetica</button>
+          </div>
+        </div>
       </div>
       <div class="row product-list">
         <div class="col-4"
