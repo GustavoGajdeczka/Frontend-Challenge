@@ -14,6 +14,8 @@ export class AppComponent {
   carts: any;
   valor: any;
   subtotal: number;
+  frete: number;
+  valorTotal: number;
   arrayId: any;
 
   constructor() {
@@ -31,6 +33,15 @@ export class AppComponent {
       this.selectedProducts++;
       this.carts.push(product);
       this.arrayId.push(product.id);
+    }
+  }
+
+  public removeProducts(product) {
+    for (let index = 0; index < this.carts.length; index++) {
+      if (this.carts[index] == product) {
+        this.arrayId.splice(index, 1);
+        this.carts.splice(index, 1);
+      }
     }
   }
 
