@@ -1,71 +1,78 @@
-<div class="container-fluid">
-  <div class="row ">
-    <div class="product-side">
-      <div class="d-flex top-description">
-        <h1 class="text-top"> Games </h1>
-        <div ngbDropdown class="dropdown justify-content-end">
-          <button class="btn btn-light dropdown-btn"
-                  id="dropdownBasic1"
-                  ngbDropdownToggle>
-            {{selectedDropdown}}
-          </button>
-          <div class="col-lg" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click)="sortType('score')">Mais Populares</button>
-            <button ngbDropdownItem (click)="sortType('lessPrice')">Menor Preço</button>
-            <button ngbDropdownItem (click)="sortType('plusPrice')">Maior Preço</button>
-            <button ngbDropdownItem (click)="sortType('alfabetic')">Ordem Alfatabetica</button>
-          </div>
-        </div>
-      </div>
-      <div class="row product-list">
-        <div class="col-4"
-             *ngFor="let product of products"
-             (click)="getProduct(product)"
-             (mouseover)="product.hover=true"
-             (mouseleave)="product.hover=false">
-          <div class="card product-card align-middle">
-            <img class="card-img-top" src="./../assets/{{product.image}}" alt="Card image cap">
-          </div>
-          <div class="card-body">
-            <p class="card-text text-center text-name" *ngIf="!product.hover">{{product.name}}</p>
-            <p class="card-text text-center text-price" *ngIf="!product.hover">R$ {{product.price | number:'2.2-2'}}</p>
-            <p class="card-text text-center text-cart text-price" *ngIf="product.hover"> adicionar ao carrinho </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="card card-cart">
-        <div class="card-body">
-          <h5 class="card-title">Carrinho ({{selectedProducts}} itens) </h5>
-          <div class="unselectedProducts" *ngIf="!selectedProducts">
-            <img class="empty-cart" src="./../assets/mbri-cart-add.svg">
-            <p class="card-text text-empty">Até o momento, seu carrinho está vazio.</p>
-          </div>
-          <div class="cart" *ngIf="selectedProducts">
-            <div class="row cart-products" *ngFor="let cart of carts" (click)="removeProducts(cart)">
-              <div class="card col-3 product-cart-image">
-                <img class="cart-img" src="./../assets/{{cart.image}}">
-              </div>
-              <div class="col-9">
-                <p class="cart-product-name">{{cart.name}}</p>
-                <p class="cart-product-price">R$ {{cart.price}}</p>
+<html>
+<body>
+  <div>
+    <div class="container-fluid">
+      <div class="row ">
+        <div class="product-side">
+          <div class="d-flex top-description">
+            <h1 class="text-top"> Games </h1>
+            <div ngbDropdown class="dropdown justify-content-end">
+              <button class="btn btn-light dropdown-btn"
+                      id="dropdownBasic1"
+                      ngbDropdownToggle>
+                {{selectedDropdown}}
+              </button>
+              <div class="col-lg" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="sortType('score')">Mais Populares</button>
+                <button ngbDropdownItem (click)="sortType('lessPrice')">Menor Preço</button>
+                <button ngbDropdownItem (click)="sortType('plusPrice')">Maior Preço</button>
+                <button ngbDropdownItem (click)="sortType('alfabetic')">Ordem Alfatabetica</button>
               </div>
             </div>
-            <div class="row cart-price">
-              <p class="col">subtotal</p>
-              <p class="col text-right">R$ {{subtotal | number:'2.2-2'}}</p>
-              <p class="w-100"></p>
-              <p class="col">frete</p>
-              <p class="col text-right">R$ {{frete | number:'2.2-2'}}</p>
-              <p class="w-100"></p>
-              <p class="col">total</p>
-              <p class="col text-right">R$ {{valorTotal | number:'2.2-2'}}</p>
+          </div>
+          <div class="row product-list">
+            <div class="col-4"
+                 *ngFor="let product of products"
+                 (click)="getProduct(product)"
+                 (mouseover)="product.hover=true"
+                 (mouseleave)="product.hover=false">
+              <div class="card product-card align-middle">
+                <img class="card-img-top" src="./../assets/{{product.image}}" alt="Card image cap">
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center text-name" *ngIf="!product.hover">{{product.name}}</p>
+                <p class="card-text text-center text-price" *ngIf="!product.hover">R$ {{product.price | number:'2.2-2'}}</p>
+                <p class="card-text text-center text-cart text-price" *ngIf="product.hover"> adicionar ao carrinho </p>
+              </div>
             </div>
-            <button class="btn btn-primary"> Finalizar Compra </button>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-cart">
+            <div class="card-body">
+              <h5 class="card-title">Carrinho ({{selectedProducts}} itens) </h5>
+              <div class="unselectedProducts" *ngIf="!selectedProducts">
+                <img class="empty-cart" src="./../assets/mbri-cart-add.svg">
+                <p class="card-text text-empty">Até o momento, seu carrinho está vazio.</p>
+              </div>
+              <div class="cart" *ngIf="selectedProducts">
+                <div class="row cart-products" *ngFor="let cart of carts" (click)="removeProducts(cart)">
+                  <div class="card col-3 product-cart-image">
+                    <img class="cart-img" src="./../assets/{{cart.image}}">
+                  </div>
+                  <div class="col-9">
+                    <p class="cart-product-name">{{cart.name}}</p>
+                    <p class="cart-product-price">R$ {{cart.price}}</p>
+                  </div>
+                </div>
+                <div class="row cart-price">
+                  <p class="col">subtotal</p>
+                  <p class="col text-right">R$ {{subtotal | number:'2.2-2'}}</p>
+                  <p class="w-100"></p>
+                  <p class="col">frete</p>
+                  <p class="col text-right">R$ {{frete | number:'2.2-2'}}</p>
+                  <p class="w-100"></p>
+                  <p class="col">total</p>
+                  <p class="col text-right">R$ {{valorTotal | number:'2.2-2'}}</p>
+                </div>
+                <button class="btn btn-primary"> Finalizar Compra </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</body>
+
+</html>

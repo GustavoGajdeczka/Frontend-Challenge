@@ -162,3 +162,33 @@
   border-radius: 4px;
   opacity: 1;
 }
+
+
+.col-4 {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: 31px;
+  max-width: 262px;
+  margin-bottom: 48px;
+}
+
+.row-box1 {
+  padding: 0px;
+}
+
+.row {
+  margin-left: 0px;
+}
+
+.card-cart {
+  margin-top: 55px;
+  width: 262px;
+  min-height: 325px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.btn-primary {
+  width: 238px;
+  margin-left: -15px;
+}
