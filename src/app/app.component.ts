@@ -60,8 +60,20 @@ export class AppComponent {
   public removeProducts(product) {
     for (let index = 0; index < this.carts.length; index++) {
       if (this.carts[index] == product) {
+        this.valor = this.carts[index].price;
         this.arrayId.splice(index, 1);
         this.carts.splice(index, 1);
+        this.subtotal = this.subtotal - this.valor;
+        if (this.subtotal >= 250) {
+          this.frete = 0;
+        } else {
+          this.frete = this.carts.length * 10
+        }
+        this.valorTotal = this.subtotal + this.frete;
+        this.selectedProducts--;
+      }
+      if (this.carts == null) {
+        this.valorTotal = 0;
       }
     }
   }
